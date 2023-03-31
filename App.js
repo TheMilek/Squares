@@ -17,7 +17,8 @@ function installMouseHandler() {
     var startX, startY;    
     var prevX, prevY;      
     
-    var colorChoice;  
+    var colorChoice;
+    var shapeChoice;
     
     function doMouseDown(evt) {
         if (dragging) {
@@ -38,6 +39,7 @@ function installMouseHandler() {
             document.addEventListener("mouseup", doMouseUp, false);
         }
         colorChoice = Number(document.getElementById("colorChoice").value);
+        shapeChoice = Number(document.getElementById("shapeChoice").value);
     }
     
     function doMouseMove(evt) {
@@ -69,8 +71,17 @@ function installMouseHandler() {
         else if (colorChoice == 4) {
             graphics.fillStyle = "pink";
         }
-        graphics.fillRect(x-20,y-20,40,40);
-        graphics.strokeRect(x-20,y-20,40,40);
+
+        if (shapeChoice == 0)
+        {
+            graphics.fillRect(x-20,y-20,40,40);
+            graphics.strokeRect(x-20,y-20,40,40);
+        } 
+        else if (shapeChoice == 1)
+        {
+            graphics.fillCircle(x-20,y-20,40,40)
+            graphics.strokeCircle(x-20,y-20,40,40)
+        }
         
         prevX = x;  
         prevY = y;
